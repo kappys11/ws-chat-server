@@ -4,6 +4,7 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 require("dotenv").config();
 const debounce = require("just-debounce-it");
+var cron = require("node-cron");
 
 // Configuración de Express
 const app = express();
@@ -154,4 +155,11 @@ app.get("/status", (req, res) => {
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Servidor Socket.IO escuchando en el puerto ${PORT}`);
+  host = server.;
+  console.log(`Servidor Socket.IO escuchando en ${host}`);
+});
+
+// just to check if the server is alive and jump the spun down 
+cron.schedule("* 10 * * *", () => {
+  fetch('https://ws-chat-server-vfxr.onrender.com/status');
 });
