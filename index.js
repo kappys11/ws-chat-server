@@ -155,7 +155,6 @@ app.get("/status", (req, res) => {
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Servidor Socket.IO escuchando en el puerto ${PORT}`);
-  console.log(`Servidor Socket.IO escuchando en ${host}`);
 });
 
 // just to check if the server is alive and jump the spun down
