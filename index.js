@@ -5,6 +5,7 @@ const cors = require("cors");
 require("dotenv").config();
 const debounce = require("just-debounce-it");
 var cron = require("node-cron");
+const { censorText } = require("./forbidden_words");
 
 // Configuración de Express
 const app = express();
@@ -84,7 +85,9 @@ io.on("connection", (socket) => {
 
     // Broadcast el mensaje a todos los usuarios
     stopUserTyping.flush();
-    io.emit("new_message", message);
+    console.log(
+      `Mensaje de ${user.username} (${socket.id}): ${message.text}`;
+    io.emit("new_message", censorText(message));
   });
 
   // Cuando un usuario se desconecta
