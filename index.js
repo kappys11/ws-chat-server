@@ -85,8 +85,7 @@ io.on("connection", (socket) => {
 
     // Broadcast el mensaje a todos los usuarios
     stopUserTyping.flush();
-    console.log(
-      `Mensaje de ${user.username} (${socket.id}): ${message.text}`;
+    console.log(`Mensaje de ${user.username} (${socket.id}): ${message.text}`);
     io.emit("new_message", censorText(message));
   });
 
